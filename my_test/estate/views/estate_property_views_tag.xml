@@ -1,0 +1,19 @@
+<odoo>
+    <record id="estate_property_view_tree_tag" model="ir.ui.view">
+        <field name="name">estate.property.tree.tag</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+
+
+    <record id="estate_property_act_window_tag" model="ir.actions.act_window">
+        <field name="name">房屋标签</field>
+        <field name="res_model">estate.property.tag</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>
