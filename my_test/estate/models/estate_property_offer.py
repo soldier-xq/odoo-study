@@ -15,6 +15,10 @@ class EstatePropertyOffer(models.Model):
     validity = fields.Integer(string="有效期",default=7)
     date_deadline = fields.Date(string="截止日期",compute="_compute_date_deadline",inverse="_inverse_date_deadline")
 
+    _sql_constraints = [
+        ('check_price', 'CHECK(price > 0)', '报价必须为正数'),
+    ]
+
     @api.depends('create_date','validity')
     def _compute_date_deadline(self):
         for record in self:
@@ -23,3 +27,14 @@ class EstatePropertyOffer(models.Model):
     def _inverse_date_deadline(self):
         for record in self:
             record.validity = (record.date_deadline - record.create_date.date()).days
+
+    def action_accept(self):
+        for record in self:
+            record.status = 'accepted'
+            # record.partner_id.action_refuse()
+            record.property_id.selling_price = record.price
+            record.property_id.buyer_id = record.partner_id.id
+
+    def action_refuse(self):
+        for record in self:
+            record.status = 'refused'

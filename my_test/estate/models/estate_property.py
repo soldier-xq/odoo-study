@@ -33,6 +33,17 @@ class EstateProperty(models.Model):
     total_area = fields.Float(string="总面积",compute="_compute_total_area",store=True)
     best_price = fields.Float(string="最佳报价",compute="_compute_best_price",store=True)
 
+    _sql_constraints = [
+        ('check_expected_price', 'CHECK(expected_price > 0)', '期望售价必须大于0'),
+        ('check_selling_price', 'CHECK(selling_price >= 0)', '销售价格必须大于等于0'),
+    ]
+
+    # @api.constrains('selling_price','expected_price')
+    # def _check_price(self):
+    #     for record in self:
+    #         if record.selling_price < 0.9 * record.expected_price:
+    #             raise ValueError("销售价格不能低于期望售价的90%")
+
     @api.depends('living_area','garden_area')
     def _compute_total_area(self):
         for record in self:
@@ -42,3 +53,32 @@ class EstateProperty(models.Model):
     def _compute_best_price(self):
         for record in self:
             record.best_price = max(record.offer_ids.mapped('price')) if record.offer_ids else 0.0
+
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = 'north'
+        else:
+            self.garden_area = 0.0
+            self.garden_orientation = False
+
+    @api.onchange('garage')
+    def _onchange_garden(self):
+        if self.garage:
+            return {
+                'warning': {
+                    'title': "警告",
+                    'message': "我看见你了",
+                },
+            }
+
+    def action_sold(self):
+        for record in self:
+            record.state = 'sold'
+        return True
+
+    def action_cancel(self):
+        for record in self:
+            record.state ='canceled'
+

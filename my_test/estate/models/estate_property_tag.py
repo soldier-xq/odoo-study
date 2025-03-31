@@ -8,3 +8,6 @@ class EstatePropertyTag(models.Model):
     _description = '房产标签'
 
     name = fields.Char(string="房产标签",required=True)
+    _sql_constraints = [
+        ('check_name', 'UNIQUE(name)', '标签名称必须唯一'),
+    ]
