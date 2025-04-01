@@ -6,6 +6,7 @@ from odoo import models, fields, api
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = 'Estate Property'
+    _order = 'id desc'
 
     name = fields.Char(string="名称",required=True)
     description = fields.Text(string="描述")

@@ -7,6 +7,7 @@ from datetime import timedelta
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
     _description = '房产报价'
+    _order = 'price desc'
 
     price = fields.Float(string="价格")
     status = fields.Selection(string="报价状态",selection=[('accepted', '接受'), ('refused', '拒绝')],copy=False)

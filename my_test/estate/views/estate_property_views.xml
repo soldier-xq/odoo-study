@@ -166,15 +166,15 @@
                     <button name="action_sold" string="已售出" type="object" class="btn-primary"/>
                     <button name="action_cancel" string="取消" type="object" class="btn-danger"/>
                     <button name="%(estate_property_act_window_tag)d" string="action_test" type="action" class="btn-danger"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
                 <sheet>
                     <div class="o_form_sheet">
                         <h1><field name="name">我是H1</field></h1>
-                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="tag_ids" widget="many2many_tags" option="{'color_field':'color'}"/>
                         <group>
                             <group>
-                                <field name="state"/>
-                                <field name="property_typ_id"/>
+                                <field name="property_typ_id" option="{'no_create': true , 'no_open': true }"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>
                             </group>
