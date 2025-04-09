@@ -9,8 +9,8 @@
                 <field name="validity"/>
                 <field name="date_deadline"/>
                 <field name="status"/>
-                <button name="action_accept" string="" type="object" title="接受" icon="fa-check"/>
-                <button name="action_refuse" string="" type="object" title="拒绝" icon="fa-times"/>
+                <button name="action_accept" string="" type="object" title="接受" icon="fa-check" invisible="not status"/>
+                <button name="action_refuse" string="" type="object" title="拒绝" icon="fa-times" invisible="not status"/>
             </list>
         </field>
     </record>
