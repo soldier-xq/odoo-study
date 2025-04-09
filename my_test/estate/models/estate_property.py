@@ -17,8 +17,8 @@ class EstateProperty(models.Model):
     bedrooms = fields.Integer(string="卧室",default=2)
     living_area = fields.Integer(string="客厅面积")
     facades = fields.Integer(string="门数")
-    garage = fields.Boolean(string="车库")
-    garden = fields.Boolean(string="花园")
+    garage = fields.Boolean(string="是否有车库")
+    garden = fields.Boolean(string="是否有花园")
     garden_area = fields.Integer(string="花园面积")
     garden_orientation = fields.Selection(
         string="花园方向",
