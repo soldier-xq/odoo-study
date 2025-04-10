@@ -3,9 +3,10 @@
         <menuitem id="estate_menu_first" name="信息">
             <menuitem id="estate_property_action_002" name="dj002" action="estate_property_act_window"/>
         </menuitem>
-        <menuitem id="estate_menu_setting" name="设置" sequence="10">
-            <menuitem id="estate_property_action_setting" name="dj_setting" action="estate_property_act_window_type"/>
-            <menuitem id="estate_property_action_tag" name="dj_tag" action="estate_property_act_window_tag"/>
+
+        <menuitem id="estate_menu_setting" name="设置">
+            <menuitem id="estate_property_action_setting" action="estate_property_act_window_type"/>
+            <menuitem id="estate_property_action_tag" action="estate_property_act_window_tag"/>
         </menuitem>
     </menuitem>
 </odoo>
