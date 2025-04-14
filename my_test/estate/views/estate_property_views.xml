@@ -40,7 +40,7 @@
                 </header>
                 <sheet>
                     <div class="o_form_sheet">
-                        <h1><field name="name">我是H1</field></h1>
+                        <h1><field name="name">我是H1111111111</field></h1>
                         <field name="tag_ids" widget="many2many_tags" option="{'color_field':'color'}"/>
                         <group>
                             <group>
