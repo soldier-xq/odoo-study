@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="property_template">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>房产列表</h1>
+                <!-- 自定义 HTML/CSS/JavaScript -->
+                <div class="row">
+                    <t t-foreach="properties" t-as="property">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><t t-esc="property.name"/></h5>
+                                    <p class="card-text">
+                                        价格: <t t-esc="property.expected_price"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                
+                <!-- 添加自定义 JavaScript -->
+                <script>
+                    $(document).ready(function() {
+                        // 你的 JavaScript 代码
+                    });
+                </script>
+                
+                <!-- 添加自定义 CSS -->
+                <style>
+                    .card {
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    }
+                    .card:hover {
+                        transform: translateY(-5px);
+                        transition: all 0.3s ease;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+</odoo>
